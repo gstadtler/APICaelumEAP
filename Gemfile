@@ -12,6 +12,8 @@ gem 'rails', '~> 6.0.0'
 gem 'devise'
 # Simple token for authentication
 gem 'simple_token_authentication', '~> 1.0'
+# The readline library provides a pure Ruby implementation of the GNU readline C library
+gem 'rb-readline', '~> 0.5.3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
