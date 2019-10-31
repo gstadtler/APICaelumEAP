@@ -10,6 +10,8 @@ gem 'rack-attack'
 gem 'rails', '~> 6.0.0'
 # Devise for authentication
 gem 'devise'
+# Simple token for authentication
+gem 'simple_token_authentication', '~> 1.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
