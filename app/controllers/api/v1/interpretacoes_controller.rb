@@ -19,7 +19,7 @@ class Api::V1::InterpretacoesController < Api::V1::ApiController
     @interpretacao = @escala.interpretacoes.build
   end
 
-  # GET /posts/1/edit
+  # GET /interpretacoes/1/edit
   def edit
 
   end
@@ -43,24 +43,24 @@ class Api::V1::InterpretacoesController < Api::V1::ApiController
     end
   end
 
-  private
-
   # DELETE /interpretacoes/1
   def destroy
     @interpretacao.destroy
   end
 
-  def get_escala
-    @escala = Escala.find_by(id: params[:escalas_id])
-  end
+  private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_interpretacao
-    @interpretacao = @escala.interpretacoes.find_by(id: params[:id])
-  end
+    def get_escala
+      @escala = Escala.find_by(id: params[:escalas_id])
+    end
 
-  # Only allow a trusted parameter "white list" through.
-  def interpretacao_params
-    params.require(:interpretacao).permit(:nome, :valor_minimo, :valor_maximo, :escalas_id)
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_interpretacao
+      @interpretacao = @escala.interpretacoes.find_by(id: params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def interpretacao_params
+      params.require(:interpretacao).permit(:nome, :valor_minimo, :valor_maximo, :escalas_id)
+    end
 end
