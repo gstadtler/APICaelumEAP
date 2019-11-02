@@ -48,13 +48,13 @@ class Api::V1::EscalasController < Api::V1::ApiController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_escala
-      @escala = Escala.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_escala
+    @escala = Escala.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def escala_params
-      params.require(:escala).permit(:nome)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def escala_params
+    params.require(:escala).permit(:nome)
+  end
 end
