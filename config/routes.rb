@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       end
       resources :escalas do
         resources :interpretacoes
-        resources :parametros
+        resources :parametros do
+          resources :respostas
+        end
       end
     end
   end
