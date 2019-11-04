@@ -5,7 +5,7 @@ class Api::V1::RespostasController < Api::V1::ApiController
   before_action :set_parametro_resposta, only: [:show, :update, :destroy]
   # GET /respostas
   def index
-    json_response(@escala.parametros.respostas)
+    json_response(@parametro.respostas)
   end
 
   # GET /respostas/1
@@ -43,7 +43,7 @@ class Api::V1::RespostasController < Api::V1::ApiController
   end
 
   def set_parametro_resposta
-    @resposta = @parametro.find_by!(id: params[:id])
+    @resposta = @parametro.respostas.find_by!(id: params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
