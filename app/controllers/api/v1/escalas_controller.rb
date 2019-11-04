@@ -1,50 +1,33 @@
 class Api::V1::EscalasController < Api::V1::ApiController
-  before_action :set_escala, only: [:show, :edit, :update, :destroy]
+  before_action :set_escala, only: [:show, :update, :destroy]
 
   # GET /escalas
   def index
     @escalas = Escala.all
-
-    render json: @escalas
-  end
-
-  # GET /escalas/1
-  def show
-    render json: @escala
-  end
-
-  # GET /escalas/new
-  def new
-    @escala = Escala.new
-  end
-
-  # GET /escalas/1/edit
-  def edit
+    json_response(@escalas)
   end
 
   # POST /escalas
   def create
-    @escala = Escala.new(escala_params)
-
-    if @escala.save
-      render json: @escala, status: :created, location: @escala
-    else
-      render json: @escala.errors, status: :unprocessable_entity
-    end
+    @escala = Escala.create(escala_params)
+    json_response(@escala, :created)
   end
 
-  # PATCH/PUT /escalas/1
+  # GET /escalas/:id
+  def show
+    json_response(@escala)
+  end
+
+  # PUT /escalas/1
   def update
-    if @escala.update(escala_params)
-      render json: @escala
-    else
-      render json: @escala.errors, status: :unprocessable_entity
-    end
+    @escala.update(escala_params)
+    json_response(@escala, :updated)
   end
 
   # DELETE /escalas/1
   def destroy
     @escala.destroy
+    head :no_content
   end
 
   private
