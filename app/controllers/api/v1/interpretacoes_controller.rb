@@ -1,66 +1,49 @@
 class Api::V1::InterpretacoesController < Api::V1::ApiController
-  before_action :set_interpretacao, only: [:show, :edit, :update, :destroy]
-  before_action :get_escala
+  wrap_parameters :interpretacao, include: %i[nome valor_minimo valor_maximo]
+  before_action :set_escala
+  before_action :set_escala_interpretacao, only: [:show, :update, :destroy]
 
   # GET /interpretacoes
   def index
-    @interpretacoes = @escala.interpretacoes
-
-    render json: @interpretacoes
+    json_response(@escala.interpretacoes)
   end
 
   # GET /interpretacoes/1
   def show
-    render json: @interpretacao
-  end
-
-  # GET /interpretacoes/new
-  def new
-    @interpretacao = @escala.interpretacoes.build
-  end
-
-  # GET /interpretacoes/1/edit
-  def edit
-
+    json_response(@interpretacao)
   end
 
   # POST /interpretacoes
   def create
-    @interpretacao = @escala.interpretacoes.build(interpretacao_params)
-    if @interpretacao.save
-      render json: @interpretacao, status: :created, location: @interpretacao
-    else
-      render json: @interpretacao.errors, status: :unprocessable_entity
-    end
+    @escala.interpretacoes.create!(interpretacao_params)
+    json_response(@interpretacao, :created)
   end
 
   # PATCH/PUT /interpretacoes/1
   def update
-    if @interpretacao.update(interpretacao_params)
-      render json: @interpretacao
-    else
-      render json: @interpretacao.errors, status: :unprocessable_entity
-    end
+    @interpretacao.update(interpretacao_params)
+    json_response(@interpretacao, :updated)
   end
 
   # DELETE /interpretacoes/1
   def destroy
     @interpretacao.destroy
+    head :no_content
   end
 
   private
 
-    def get_escala
-      @escala = Escala.find_by(id: params[:escalas_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_escala
+    @escala = Escala.find_by(id: params[:escala_id])
+  end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_interpretacao
-      @interpretacao = @escala.interpretacoes.find_by(id: params[:id])
-    end
+  def set_escala_interpretacao
+    @interpretacao = @escala.interpretacoes.find_by!(id: params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def interpretacao_params
-      params.require(:interpretacao).permit(:nome, :valor_minimo, :valor_maximo, :escalas_id)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def interpretacao_params
+    params.require(:interpretacao).permit(:nome, :valor_minimo, :valor_maximo)
+  end
 end
