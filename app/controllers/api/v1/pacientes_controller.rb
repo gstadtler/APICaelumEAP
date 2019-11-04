@@ -6,7 +6,7 @@ class Api::V1::PacientesController < Api::V1::ApiController
 
   def index
     @pacientes = current_user.pacientes
-    render json: @pacientes
+    json_response(@pacientes)
   end
 
   # GET /api/v1/pacientes/1
@@ -18,28 +18,22 @@ class Api::V1::PacientesController < Api::V1::ApiController
   # POST /api/v1/pacientes
 
   def create
-    @paciente = Paciente.new(paciente_params.merge(user: current_user))
-    if @paciente.save
-      render json: @paciente, status: :created
-    else
-      render json: @paciente.errors, status: :unprocessable_entity
-    end
+    @paciente = current_user.pacientes.create(paciente_params.merge(user: current_user))
+    json_response(@paciente, :created)
   end
 
   # PATCH/PUT /api/v1/pacientes/1
 
   def update
-    if @paciente.update(paciente_params)
-      render json: @paciente
-    else
-      render json: @paciente.errors, status: :unprocessable_entity
-    end
+    @paciente.update(paciente_params)
+    json_response(@escala, :updated)
   end
 
   # DELETE /api/v1/pacientes/1
 
   def destroy
     @paciente.destroy
+    head :no_content
   end
 
   private
