@@ -1,5 +1,7 @@
 module Api::V1
-  class ApiController < ApplicationController
+  class ApiController < ActionController::API
+    include Response
+    include ExceptionHandler
     acts_as_token_authentication_handler_for User
     before_action :require_authentication!
 

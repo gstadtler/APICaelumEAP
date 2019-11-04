@@ -1,38 +1,27 @@
 class Api::V1::ParametrosController < Api::V1::ApiController
-  before_action :set_parametro, only: [:show, :edit, :update, :destroy]
+  before_action :set_parametro, only: [:show, :update, :destroy]
   wrap_parameters :parametro, include: %i[nome escala_id]
   before_action :get_escala
 
   # GET /parametros
   def index
-    @parametros = @escalas.parametros
-
-    render json: @parametros
+    json_response(@escalas.parametros)
   end
 
   # GET /parametros/1
   def show
-    render json: @parametro
-  end
-
-  # GET /parametros/new
-  def new
-    @parametro = @escala.parametros.create
-  end
-
-  # GET /parametros/1/edit
-  def edit
-
+    json_response(@parametro)
   end
 
   # POST /parametros
   def create
-    @parametro = @escala.parametros.create(parametro_params)
-    if @parametro.save
-      render json: @parametro, status: :created, location: @parametro
-    else
-      render json: @parametro.errors, status: :unprocessable_entity
-    end
+    @parametro = @escala.parametros.create!(parametro_params)
+    json_response(@parametro, :created)
+    # if @parametro.save
+    #   render json: @parametro, status: :created, location: @parametro
+    # else
+    #   render json: @parametro.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /parametros/1
