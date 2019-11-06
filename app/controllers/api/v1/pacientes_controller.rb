@@ -1,6 +1,5 @@
 class Api::V1::PacientesController < Api::V1::ApiController
   before_action :set_paciente, only: [:show, :update, :destroy]
-  before_action :require_authorization!, only: [:show, :update, :destroy]
 
   # GET /api/v1/pacientes
 
@@ -48,11 +47,5 @@ class Api::V1::PacientesController < Api::V1::ApiController
 
     def paciente_params
       params.require(:paciente).permit(:nome, :cpf, :genero, :hip_diag, :idade)
-    end
-
-    def require_authorization!
-      unless current_user == @paciente.user
-        render json: {}, status: :forbidden
-      end
     end
 end

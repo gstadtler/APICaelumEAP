@@ -8,8 +8,6 @@ gem 'rack-cors'
 gem 'rack-attack'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
-# Devise for authentication
-gem 'devise'
 # Simple token for authentication
 gem 'simple_token_authentication', '~> 1.0'
 # The readline library provides a pure Ruby implementation of the GNU readline C library
