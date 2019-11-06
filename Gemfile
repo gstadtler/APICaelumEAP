@@ -8,8 +8,6 @@ gem 'rack-cors'
 gem 'rack-attack'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
-# Simple token for authentication
-gem 'simple_token_authentication', '~> 1.0'
 # The readline library provides a pure Ruby implementation of the GNU readline C library
 gem 'rb-readline', '~> 0.5.3'
 # Fast implementation of the standard Ruby debugger
@@ -25,7 +23,7 @@ gem 'puma', '~> 3.11'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

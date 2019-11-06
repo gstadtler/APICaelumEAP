@@ -1,4 +1,4 @@
-class Api::V1::RegistrosController < Api::V1::ApiController
+class RegistrosController < ApplicationController
   wrap_parameters :registro, include: %i[pontuacao escala_id]
   before_action :set_paciente
   before_action :set_paciente_registro, only: [:show, :update, :destroy]

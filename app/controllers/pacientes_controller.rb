@@ -1,34 +1,34 @@
-class Api::V1::PacientesController < Api::V1::ApiController
+class PacientesController < ApplicationController
   before_action :set_paciente, only: [:show, :update, :destroy]
 
-  # GET /api/v1/pacientes
+  # GET /pacientes
 
   def index
     @pacientes = current_user.pacientes
     json_response(@pacientes)
   end
 
-  # GET /api/v1/pacientes/1
+  # GET /pacientes/1
 
   def show
     render json: @paciente
   end
 
-  # POST /api/v1/pacientes
+  # POST /pacientes
 
   def create
-    @paciente = current_user.pacientes.create(paciente_params.merge(user: current_user))
+    @paciente = @current_user.pacientes.create(paciente_params.merge(user: current_user))
     json_response(@paciente, :created)
   end
 
-  # PATCH/PUT /api/v1/pacientes/1
+  # PATCH/PUT /pacientes/1
 
   def update
     @paciente.update(paciente_params)
     json_response(@escala, :updated)
   end
 
-  # DELETE /api/v1/pacientes/1
+  # DELETE /pacientes/1
 
   def destroy
     @paciente.destroy

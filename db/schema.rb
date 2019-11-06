@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_020025) do
+ActiveRecord::Schema.define(version: 2019_11_06_141250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,10 +87,8 @@ ActiveRecord::Schema.define(version: 2019_11_06_020025) do
     t.string "nome"
     t.string "cargo"
     t.string "documento"
-    t.string "authentication_token", limit: 30
     t.string "email"
     t.string "password_digest"
-    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
   end
 
   add_foreign_key "contacts", "users"

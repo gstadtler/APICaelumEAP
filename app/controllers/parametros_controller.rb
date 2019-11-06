@@ -1,4 +1,4 @@
-class Api::V1::ParametrosController < Api::V1::ApiController
+class ParametrosController < ApplicationController
   wrap_parameters :parametro, include: %i[nome]
   before_action :set_escala
   before_action :set_escala_parametro, only: [:show, :update, :destroy]
