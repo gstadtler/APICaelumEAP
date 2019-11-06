@@ -1,4 +1,4 @@
-class Api::V1::EscalasController < Api::V1::ApiController
+class EscalasController < ApplicationController
   before_action :set_escala, only: [:show, :update, :destroy]
 
   # GET /escalas

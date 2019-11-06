@@ -1,4 +1,4 @@
-class Api::V1::RespostasController < Api::V1::ApiController
+class RespostasController < ApplicationController
   wrap_parameters :resposta, include: %i[nome pontuacao]
   before_action :set_escala
   before_action :set_escala_parametro

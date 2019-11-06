@@ -1,4 +1,4 @@
-class Api::V1::InterpretacoesController < Api::V1::ApiController
+class InterpretacoesController < ApplicationController
   wrap_parameters :interpretacao, include: %i[nome valor_minimo valor_maximo]
   before_action :set_escala
   before_action :set_escala_interpretacao, only: [:show, :update, :destroy]
