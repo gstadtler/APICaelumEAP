@@ -24,7 +24,7 @@ Devido às necessidades técnicas a aplicação foi convertida em API para ser c
 
 ## Aplicação
 
-[Front Heroku](https://react-caelum-eap.herokuapp.com/)
+[Front Heroku](https://react-caelum-eap.herokuapp.com/) \
 [Api Heroku](https://api-caelum-eap.herokuapp.com/)
 
 ## License
