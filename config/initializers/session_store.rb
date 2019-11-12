@@ -1,5 +1,5 @@
 if Rails.env == "production"
-  Rails.application.config.session_store :cookie_store, key:"_authentication_app", domain: "https://api-caelum-eap.herokuapp.com"
+  Rails.application.config.session_store :cookie_store, key: "_ApiCaelumEAP", domain: "https://api-caelum-eap.herokuapp.com"
 else
-  Rails.application.config.session_store :cookie_store, key:"_authentication_app"
+  Rails.application.config.session_store :cookie_store, key: "_ApiCaelumEAP"
 end

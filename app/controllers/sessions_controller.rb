@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
   end
 
   def logout
+    @current_user = session[:user_id] = nil
     reset_session
     render json: { status: 200, logged_out: true }
   end
