@@ -1,5 +1,6 @@
 class Parametro < ApplicationRecord
   belongs_to :escala
-  belongs_to :registro
   has_many :respostas
+  has_many :resultados
+  has_many :registros, through: :resultados
 end

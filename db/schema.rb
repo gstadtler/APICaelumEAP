@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_141250) do
+ActiveRecord::Schema.define(version: 2019_11_15_043310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(version: 2019_11_06_141250) do
     t.index ["parametro_id"], name: "index_respostas_on_parametro_id"
   end
 
+  create_table "resultados", force: :cascade do |t|
+    t.bigint "registro_id", null: false
+    t.bigint "parametro_id", null: false
+    t.bigint "resposta_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["parametro_id"], name: "index_resultados_on_parametro_id"
+    t.index ["registro_id"], name: "index_resultados_on_registro_id"
+    t.index ["resposta_id"], name: "index_resultados_on_resposta_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -98,4 +109,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_141250) do
   add_foreign_key "registros", "escalas"
   add_foreign_key "registros", "pacientes"
   add_foreign_key "respostas", "parametros"
+  add_foreign_key "resultados", "parametros"
+  add_foreign_key "resultados", "registros"
+  add_foreign_key "resultados", "respostas"
 end
