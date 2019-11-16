@@ -38,7 +38,7 @@ module ApiCaelumEAP
     if Rails.env.production?
       config.middleware.insert_before 0, Rack::Cors do
         allow do
-          origins 'https://api-caelum-eap.herokuapp.com'
+          origins 'https://react-caelum-eap.herokuapp.com'
 
           resource '*',
                    headers: :any,
