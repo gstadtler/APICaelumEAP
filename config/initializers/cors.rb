@@ -18,7 +18,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end
 
   allow do
-    origins 'https://api-caelum-eap.herokuapp.com/'
+    origins 'https://api-caelum-eap.herokuapp.com'
 
     resource '*',
              headers: :any,
