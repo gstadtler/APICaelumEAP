@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   delete :logout, to: 'sessions#logout'
   get :logged_in, to: 'sessions#logged_in'
   resources :pacientes do
-    resources :registros
+    resources :registros do
+      resources :resultados
+    end
   end
   resources :escalas do
     resources :interpretacoes

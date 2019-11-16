@@ -1,10 +1,11 @@
 class PacientesController < ApplicationController
+  include CurrentUserConcern
   before_action :set_paciente, only: [:show, :update, :destroy]
 
   # GET /pacientes
 
   def index
-    @pacientes = current_user.pacientes
+    @pacientes = @current_user.pacientes
     json_response(@pacientes)
   end
 
@@ -17,7 +18,7 @@ class PacientesController < ApplicationController
   # POST /pacientes
 
   def create
-    @paciente = @current_user.pacientes.create(paciente_params.merge(user: current_user))
+    @paciente = @current_user.pacientes.create(paciente_params)
     json_response(@paciente, :created)
   end
 

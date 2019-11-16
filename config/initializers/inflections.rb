@@ -23,11 +23,12 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.plural(/el$/i,  'eis')
   inflect.plural(/ol$/i,  'ois')
   inflect.plural(/ul$/i,  'uis')
-  inflect.plural(/([^aeou])il$/i,  '\1is')
+  inflect.plural(/([^aeou])il$/i, '\1is')
   inflect.plural(/m$/i,   'ns')
   inflect.plural(/^(japon|escoc|ingl|dinamarqu|fregu|portugu)ês$/i,  '\1eses')
   inflect.plural(/^(|g)ás$/i,  '\1ases')
   inflect.plural(/ão$/i,  'ões')
+  inflect.plural(/ion$/i,  's')
   inflect.plural(/^(irm|m)ão$/i,  '\1ãos')
   inflect.plural(/^(alem|c|p)ão$/i,  '\1ães')  # Sem acentos...
   inflect.plural(/ao$/i,  'oes')
@@ -46,10 +47,11 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.singular(/^(.*[^s]s)es$/i, '\1')
   inflect.singular(/ães$/i, 'ão')
   inflect.singular(/aes$/i, 'ao')
-  inflect.singular(/ãos$/i, 'ão')    
+  inflect.singular(/ãos$/i, 'ão')
   inflect.singular(/aos$/i, 'ao')
   inflect.singular(/ões$/i, 'ão')
   inflect.singular(/oes$/i, 'ao')
+  inflect.singular(/ions$/i, 'ion')
   inflect.singular(/(japon|escoc|ingl|dinamarqu|fregu|portugu)eses$/i, '\1ês')
   inflect.singular(/^(g|)ases$/i,  '\1ás')  # Incontáveis
   inflect.uncountable %w( tórax tênis ônibus lápis fênix )  # Irregulares
