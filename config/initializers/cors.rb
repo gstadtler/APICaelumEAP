@@ -11,7 +11,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   if Rails.env.production?
     allow do
       origins 'https://react-caelum-eap.herokuapp.com'
-  
+
       resource '*',
                headers: :any,
                methods: %i[get post put patch delete options head],
@@ -20,7 +20,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   else
     allow do
       origins 'http://localhost:3000'
-  
+
       resource '*',
                headers: :any,
                methods: %i[get post put patch delete options head],
