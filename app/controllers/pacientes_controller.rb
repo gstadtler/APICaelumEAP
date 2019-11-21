@@ -5,7 +5,7 @@ class PacientesController < ApplicationController
   # GET /pacientes
 
   def index
-    @pacientes = Paciente.where(user_id: 6)
+    @pacientes = Paciente.where(user_id: 1)
     json_response(@pacientes)
   end
 
